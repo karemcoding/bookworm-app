@@ -11,4 +11,22 @@ class Book extends Model
 
     public $timestamps = false;
     protected $table = 'book';
+
+    public function review()
+    {
+        return $this->hasMany(Review::class, 'book_id','id');
+    }
+    public function discount(){
+        return $this->hasMany(Discount::class, 'book_id','id');
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(Author::class, 'author_id','id');
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id','id');
+    }
+    
 }
